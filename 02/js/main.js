@@ -23,13 +23,3 @@ const getSumOfEvenFiboNumNaiveWay = n => {
     return sumOfArray(fiboSeries(n).filter( e=> e%2===0 && e < n));
 };
 
-//3. benchmark
-const timeIt = (n, name, expected, func) => {
-    console.group(`${name} : ${n}`);
-
-    console.assert(func(n) === expected, `${name} - expected ${expected}, but actual ${func(n)}`);
-
-    console.groupEnd();
-};
-
-

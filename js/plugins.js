@@ -22,3 +22,10 @@
 }());
 
 // Place any jQuery/helper plugins in here.
+const timeIt = (n, name, expected, func, args) => {
+    console.group(`${name} : ${n}`);
+
+    console.assert(func(n, args) === expected, `${name} - expected ${expected}, but actual ${func(n, args)}`);
+
+    console.groupEnd();
+};
