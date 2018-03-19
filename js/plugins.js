@@ -24,11 +24,25 @@
 
 // Place any jQuery/helper plugins in here.
 
+//https://30secondsofcode.org/#equals
+if( typeof equals !== "function") {
+    window.equals = (a, b) => {
+        if (a === b) return true;
+        if (a instanceof Date && b instanceof Date) return a.getTime() === b.getTime();
+        if (!a || !b || (typeof a != 'object' && typeof b !== 'object')) return a === b;
+        if (a === null || a === undefined || b === null || b === undefined) return false;
+        if (a.prototype !== b.prototype) return false;
+        let keys = Object.keys(a);
+        if (keys.length !== Object.keys(b).length) return false;
+        return keys.every(k => equals(a[k], b[k]));
+    };
+}
+
 const timeIt = (n, name, expected, func, equalFn, args) => {
     console.group(`${name} : ${n}`);
 
     if (typeof equalFn !== "function") {
-        equalFn = (a, b) => a === b;
+        equalFn = equals;
     }
 
     const result = func(n, args);
