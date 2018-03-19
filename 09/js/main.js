@@ -3,11 +3,7 @@
 const moveZerosToRight = (list) =>{
     let count = list.reduce( (count, current) => count+ (current===0?1:0), 0);
     list = list.filter(Boolean);
-    while(count>0){
-        list.push(0);
-        count--;
-    }
-    return list;
+    return list.concat( Array(count).fill(0) );
 };
 
 
@@ -18,8 +14,7 @@ Array.prototype.swap = function (x,y) {
     return this;
 };
 
-const moveZerosToRightUsingSwap = (original) =>{
-    const list = Array.from(original);
+const moveZerosToRightUsingSwap = (list) =>{
     let lastPositionOfZero = 0;
     for(let i=0; i<list.length; i++){
         if( list[i]!==0){
