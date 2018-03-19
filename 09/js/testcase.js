@@ -5,8 +5,8 @@ console.log("-----------------------move zero to right");
 
 let func = moveZerosToRight;
 
-const input0 = [6,5,4,3,2,1];
-const result0 = [6,5,4,3,2,1];
+const input0 = [6, 5, 4, 3, 2, 1];
+const result0 = [6, 5, 4, 3, 2, 1];
 
 const input1 = [0, 5, 0, 3, -1];
 const result1 = [5, 3, -1, 0, 0];
