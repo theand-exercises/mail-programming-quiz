@@ -22,10 +22,14 @@
 }());
 
 // Place any jQuery/helper plugins in here.
-const timeIt = (n, name, expected, func, args) => {
+const timeIt = (n, name, expected, func, equalFn, args) => {
     console.group(`${name} : ${n}`);
 
-    console.assert(func(n, args) === expected, `${name} - expected ${expected}, but actual ${func(n, args)}`);
+    if( typeof equalFn !== "function" ){
+        equalFn = (a,b) => a===b;
+    }
+
+    console.assert(equalFn( func(n, args) , expected), `${name} - expected [${expected}], but actual [${func(n, args)}]`);
 
     console.groupEnd();
 };
