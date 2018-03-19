@@ -3,7 +3,7 @@ console.log("-----------------------find second max integer");
 
 let func = findSecondMax;
 
-const input0 = [6,5,4,3,2,1];
+const input0 = [6, 5, 4, 3, 2, 1];
 const result0 = 5;
 
 const input1 = [0, 5, 0, 3, 1];
@@ -17,7 +17,6 @@ const result3 = "NORESULT";
 
 const input4 = [-10, -5, -4, -3, -1];
 const result4 = -3;
-
 
 
 timeIt(input0, Object.keys({input0})[0], result0, func, equals);
