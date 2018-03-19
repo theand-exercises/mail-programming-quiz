@@ -11,7 +11,7 @@ const findSecondMax = (list) => {
         return acc;
     }, {first: -Infinity, second: -Infinity});
 
-    if (result.first === result.second || result.first === -Infinity || result.second === -Infinity) {
+    if (result.first === result.second) {
         return "NORESULT";
     } else {
         return result.second;
