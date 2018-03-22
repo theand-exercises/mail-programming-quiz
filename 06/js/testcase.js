@@ -1,6 +1,7 @@
 console.log("-----------------------intersection");
 
-let func = intersection;
+
+let func = mergeRangeArray;
 
 const input1 = [
     [2,4],
@@ -22,5 +23,5 @@ const input2 = [
 const result2 = [
     [1,6],
 ];
-timeIt(input2, Object.keys({input2})[0], result2, func);
+// timeIt(input2, Object.keys({input2})[0], result2, func);
 
