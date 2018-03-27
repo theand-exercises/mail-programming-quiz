@@ -10,8 +10,11 @@ const isNested = (original, current) => current[LEFT] >= original[LEFT] && curre
 
 const mergeRangeArray = (givenArrayOfArray) => {
 
+    //앞자리 기준 asc 정렬
+    givenArrayOfArray = stableSort(givenArrayOfArray, (a,b) => a[0]>b[0]);
 
-    const result = givenArrayOfArray.reduce((mergedArrayOfArray, eachFromGivenArray) => {
+
+    let finalResult = givenArrayOfArray.reduce((mergedArrayOfArray, eachFromGivenArray) => {
 
         mergedArrayOfArray = mergedArrayOfArray.reduce((result, eachFromMergedArray, i) => {
             //이미 있는 요소와 범위가 겹치면
@@ -44,5 +47,5 @@ const mergeRangeArray = (givenArrayOfArray) => {
         [givenArrayOfArray[0][LEFT], givenArrayOfArray[0][RIGHT]]
     ]);
 
-    return result;
+    return finalResult;
 };
