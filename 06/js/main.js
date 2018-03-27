@@ -1,35 +1,48 @@
 //0. common
 
-const LEFT=0;
-const RIGHT=1;
+const LEFT = 0;
+const RIGHT = 1;
 
-const isLeftInside = (src, target) => src[LEFT] >= target[LEFT] && src[LEFT] <= target[RIGHT];
-const isRightInside = (src, target) => src[RIGHT] >= target[LEFT] && src[RIGHT] <= target[RIGHT];
+const isLeftWider = (original, current) => current[LEFT] <= original[LEFT] && current[RIGHT] >= original[LEFT];
+const isRightWider = (original, current) => current[RIGHT] >= original[RIGHT] && current[LEFT] <= original[RIGHT];
+const isWider = (original, current) => isLeftWider(original, current) || isRightWider(original, current);
+const isNested = (original, current) => current[LEFT] >= original[LEFT] && current[RIGHT] <= original[RIGHT];
+
+const mergeRangeArray = (givenArrayOfArray) => {
 
 
-const mergeRangeArray = (arrayofarry) =>{
+    const result = givenArrayOfArray.reduce((mergedArrayOfArray, eachFromGivenArray) => {
 
+        mergedArrayOfArray = mergedArrayOfArray.reduce((result, eachFromMergedArray, i) => {
+            //이미 있는 요소와 범위가 겹치면
+            if (isWider(eachFromMergedArray, eachFromGivenArray)) {
+                if (isLeftWider(eachFromMergedArray, eachFromGivenArray)) {
+                    eachFromMergedArray[LEFT] = eachFromGivenArray[LEFT];
+                }
+                if (isRightWider(eachFromMergedArray, eachFromGivenArray)) {
+                    eachFromMergedArray[RIGHT] = eachFromGivenArray[RIGHT];
+                }
+                result.found = true;
+            }
+            result.merged.push(eachFromMergedArray);
 
-    const result = arrayofarry.reduce( (acc, arr) => {
+            //이미 있는 요소에 포함되는 거면 스킵
+            if(isNested(eachFromMergedArray, eachFromGivenArray)) {
+                return result;
+            }
 
-        // const current = [];
-        // if( equals(acc, []) ){
-        //     current[LEFT] = arr[LEFT];
-        //     current[RIGHT] = arr[RIGHT];
-        //     acc.push(current);
-        //     console.log(current);
-        //     console.log("X")
-        // }else{
-        //
-        // }
+            //마지막까지 왔는데 이미 있는 요소와 겹치지 않으면
+            if (i == mergedArrayOfArray.length-1 && result.found === false) {
+                result.merged.push(eachFromGivenArray)
+            }
 
-        //acc 를 돌면서
-        //이미 있는 요소에 범위가 포함되면 거기를 가지고 어택
-        //이미 있는 요소에 범위가 포함되지 않으면 새로.
-        console.log(acc);
+            return result;
+        }, {merged: [], found: false}).merged;
 
-        return acc;
-    } , [ [arrayofarry[0][LEFT], arrayofarry[0][RIGHT]]]);
+        return mergedArrayOfArray;
+    }, [
+        [givenArrayOfArray[0][LEFT], givenArrayOfArray[0][RIGHT]]
+    ]);
 
     return result;
 };
