@@ -5,7 +5,6 @@ const RIGHT = 1;
 
 const isLeftWider = (original, current) => current[LEFT] <= original[LEFT] && current[RIGHT] >= original[LEFT];
 const isRightWider = (original, current) => current[RIGHT] >= original[RIGHT] && current[LEFT] <= original[RIGHT];
-const isWider = (original, current) => isLeftWider(original, current) || isRightWider(original, current);
 const isNested = (original, current) => current[LEFT] >= original[LEFT] && current[RIGHT] <= original[RIGHT];
 
 const mergeRangeArray = (givenArrayOfArray) => {
@@ -18,13 +17,12 @@ const mergeRangeArray = (givenArrayOfArray) => {
 
         mergedArrayOfArray = mergedArrayOfArray.reduce((result, eachFromMergedArray, i) => {
             //이미 있는 요소와 범위가 겹치면
-            if (isWider(eachFromMergedArray, eachFromGivenArray)) {
-                if (isLeftWider(eachFromMergedArray, eachFromGivenArray)) {
-                    eachFromMergedArray[LEFT] = eachFromGivenArray[LEFT];
-                }
-                if (isRightWider(eachFromMergedArray, eachFromGivenArray)) {
-                    eachFromMergedArray[RIGHT] = eachFromGivenArray[RIGHT];
-                }
+            if (isLeftWider(eachFromMergedArray, eachFromGivenArray)) {
+                eachFromMergedArray[LEFT] = eachFromGivenArray[LEFT];
+                result.found = true;
+            }
+            if (isRightWider(eachFromMergedArray, eachFromGivenArray)) {
+                eachFromMergedArray[RIGHT] = eachFromGivenArray[RIGHT];
                 result.found = true;
             }
             result.merged.push(eachFromMergedArray);
