@@ -1,6 +1,27 @@
 console.log("-----------------------intersection");
 
-let func = intersection;
+let func;
+
+func = isLeftWider;
+const input0a = [2,4];
+const result0a = true;
+timeIt(input0a, Object.keys({input0a})[0], result0a, func, null, [1,5]);
+
+
+func = isRightWider;
+const input0b = [2,4];
+const result0b = true;
+timeIt(input0b, Object.keys({input0b})[0], result0b, func, null, [1,5]);
+
+
+func = isWider;
+const input0c = [2,4];
+const result0c = true;
+timeIt(input0c, Object.keys({input0c})[0], result0c, func, null, [1,5]);
+
+
+
+func = mergeRangeArray;
 
 const input1 = [
     [2,4],
