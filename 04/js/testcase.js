@@ -1,35 +1,24 @@
 console.log("-----------------------isIntegerPalindrome.");
 
-let funcNum = numOfDigitsSumMemoize;
+let funcNum = isPalindromeInteger;
 
-const input1 = 1;
-timeIt(input1, Object.keys({input1})[0], 1, funcNum);
-timeIt(input1, Object.keys({input1})[0], 1, funcNum);
-timeIt(input1, Object.keys({input1})[0], 1, funcNum);
-timeIt(input1, Object.keys({input1})[0], 1, funcNum);
-timeIt(input1, Object.keys({input1})[0], 1, funcNum);
+const input1 = 12345;
+const result1 = false;
+timeIt(input1, Object.keys({input1})[0], result1, funcNum);
 
 
-const input123 = 123;
-timeIt(input123, Object.keys({input123})[0], 3, funcNum);
-timeIt(input123, Object.keys({input123})[0], 3, funcNum);
-timeIt(input123, Object.keys({input123})[0], 3, funcNum);
-timeIt(input123, Object.keys({input123})[0], 3, funcNum);
-timeIt(input123, Object.keys({input123})[0], 3, funcNum);
+const input2 = -101;
+const result2 = false;
+timeIt(input2, Object.keys({input2})[0], result2, funcNum);
 
-let func = isIntegerPalindrome;
 
-// const input12345 = 12345;
-// timeIt(input12345, Object.keys({input12345})[0], false, func);
-//
-// const inputMinus101 = -101;
-// timeIt(inputMinus101, Object.keys({inputMinus101})[0], false, func);
-//
-//
-// const input11111 = 11111;
-// timeIt(input11111, Object.keys({input11111})[0], true, func);
-//
-//
-// const input12421 = 12421;
-// timeIt(input12421, Object.keys({input12421})[0], true, func);
+const input3 = 11111;
+const result3 = true;
+timeIt(input3, Object.keys({input3})[0], result3, funcNum);
+
+
+const input4 = 12321;
+const result4 = true;
+timeIt(input4, Object.keys({input4})[0], result4, funcNum);
+
 
