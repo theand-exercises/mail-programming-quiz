@@ -1,7 +1,6 @@
-console.log("==========Using console.log + Date.getTime");
+console.log(`==========Using console.log + Date.getTime : ${COUNT} loops`);
 
 (() => {
-    var COUNT = 1000000;
     var arr = [];
     var init = function () {
         for (var i = 0; i < COUNT; i++) {

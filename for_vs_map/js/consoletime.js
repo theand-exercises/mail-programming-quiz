@@ -1,7 +1,6 @@
-console.log("==========Using console.time + ES6");
+console.log(`==========Using console.time + ES6 : ${COUNT} loops`);
 
 (() => {
-    const COUNT = 1000000;
     const arr = [];
     const init = function () {
         for (let i = 0; i < COUNT; i++) {
